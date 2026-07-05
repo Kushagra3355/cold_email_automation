@@ -1,0 +1,10 @@
+Mail sent to 100 recipients on Day 1
+
+
+Points to Ponder:
+
+We need to avoud getting labeled as spammed
+
+Send only 10 15 emails for a week, then slowly increase the count
+
+Make delay of 3 to 5 min between each emails
