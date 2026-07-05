@@ -1,0 +1,4 @@
+Put your resume here and name it exactly:  resume.pdf
+
+The path is already set in config.py as:  data/resume.pdf
+If you name it differently, update ATTACHMENTS in config.py to match.
