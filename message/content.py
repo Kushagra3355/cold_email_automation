@@ -10,7 +10,7 @@ BODY = """Dear {name},
 
 I hope you are doing well.
 
-I am writing to express my interest in the {title} position at {company}.
+I am writing to express my interest in the Project Manager position at {company}.
 With experience in coordination, documentation, stakeholder communication,
 and project tracking, I believe I would be a good fit for this opportunity.
 
