@@ -10,6 +10,7 @@ import time
 import smtplib
 from pathlib import Path
 from email.message import EmailMessage
+from email.utils import formataddr
 
 import config
 from message import content
@@ -17,7 +18,8 @@ from message import content
 
 def build_message(sender, row):
     msg = EmailMessage()
-    msg["From"] = sender
+    sender_name = getattr(config, "SENDER_NAME", "")
+    msg["From"] = formataddr((sender_name, sender)) if sender_name else sender
     msg["To"] = row["email"]
     msg["Subject"] = content.build_subject(row)
     msg.set_content(content.build_body(row))
