@@ -14,7 +14,7 @@ SMTP_PORT = 465
 SMTP_MODE = "ssl"          # "ssl" (port 465) or "starttls" (port 587)
 
 # --- Files ---
-EXCEL_FILE = "data/HR_Contact_List.xlsx"   # your recipient list
+CSV_FILE = "data/HR_Contact_List.csv"   # your recipient list
 
 # --- Sender display name ---
 # This is the name recipients see in their inbox.

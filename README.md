@@ -17,8 +17,8 @@ mailer/
 │   └── content.py       # SUBJECT + BODY templates ({name} merge tags)
 │
 ├── data/
-│   ├── recipients.py    # reads the Excel list
-│   └── emails.xlsx      # your recipient list (gitignored)
+│   ├── recipients.py    # reads the CSV list
+│   └── emails.csv       # your recipient list (gitignored)
 │
 └── secret/
     ├── credentials.py   # loads email + app password securely
@@ -31,7 +31,7 @@ mailer/
 - **secret/** — your email and app password. Loaded from environment variables,
   then a `secret/.env` file, then an interactive hidden prompt. Never hardcoded.
 - **message/** — just the email content. Edit `SUBJECT` and `BODY`. Use `{name}`
-  or any Excel column header as a placeholder.
+  or any CSV column header as a placeholder.
 - **data/** — the recipient list. First row = headers, must include an `email`
   column. Every column becomes a merge field.
 - **config.py** — SMTP server/port, attachment paths, delay, retry count.
@@ -45,7 +45,7 @@ mailer/
      `export EMAIL_APP_PASSWORD=xxxx`
    - **File:** copy `secret/.env.example` → `secret/.env` and fill it in
    - **Prompt:** just run and type them when asked (password stays hidden)
-4. Put your list at `data/emails.xlsx` (first row headers, an `email` column).
+4. Put your list at `data/HR_Contact_List.csv` (first row headers, an `email` column).
 5. Edit `message/content.py` for your subject/body.
 6. Attachments: add paths to `ATTACHMENTS` in `config.py`.
 
@@ -59,13 +59,13 @@ It loads credentials, reads recipients, asks for confirmation, then sends with a
 per-recipient log and a final sent/failed count. Failed sends retry automatically
 (`MAX_RETRIES` in config.py).
 
-## Your Excel format
+## Your CSV format
 
-Your file `HR_Contact_List.xlsx` has these columns:
+Your file `HR_Contact_List.csv` has these columns:
 
-| SNo | Name         | Email                 | Title                | Company         |
-|-----|--------------|-----------------------|----------------------|-----------------|
-| 1   | Akanksha Puri| akanksha.puri@...     | Associate Director HR| SourceFuse Tech |
+| SNo | Name          | Email             | Title                 | Company         |
+| --- | ------------- | ----------------- | --------------------- | --------------- |
+| 1   | Akanksha Puri | akanksha.puri@... | Associate Director HR | SourceFuse Tech |
 
 Available merge tags in `message/content.py`: `{name}`, `{title}`, `{company}`.
 (`email` is the recipient address; `sno` is ignored.)
@@ -82,11 +82,16 @@ Available merge tags in `message/content.py`: `{name}`, `{title}`, `{company}`.
    `ATTACHMENTS = ["data/MyResume_2026.pdf", "data/portfolio.pdf"]`.
 
 ## Security notes
-- Real secrets (`secret/.env`) and your Excel (`data/*.xlsx`) are gitignored.
+
+- Real secrets (`secret/.env`) and your CSV (`data/*.csv`) are gitignored.
 - The password is read with `getpass` (hidden) and never printed or saved.
 - For a different provider, change `SMTP_SERVER`/`SMTP_PORT`/`SMTP_MODE` in config.py
   (Outlook: smtp.office365.com / 587 / starttls).
 
 ## Sending limits
+
 Gmail free ~500/day, Workspace ~2000/day. Keep the delay on to avoid throttling.
+
+```
+
 ```

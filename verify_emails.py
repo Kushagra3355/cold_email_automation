@@ -4,7 +4,7 @@ import socket
 import dns.resolver
 import time
 
-INPUT_FILE  = "Untitled spreadsheet.xlsx"          # your input Excel
+INPUT_FILE  = "Untitled spreadsheet.csv"          # your input CSV
 OUTPUT_FILE = "emails_checked.csv"   # CSV output
 DELAY = 1                            # seconds between checks
 
@@ -45,7 +45,7 @@ def verify(email):
     return mx, "unknown"
 
 # --- main ---
-df = pd.read_excel(INPUT_FILE)
+df = pd.read_csv(INPUT_FILE)
 
 mx_list, status_list = [], []
 for email in df["Email"]:

@@ -1,7 +1,7 @@
 """
 message/content.py
 ------------------
-Available merge tags (from your Excel columns):  {name}  {title}  {company}
+Available merge tags (from your CSV columns):  {name}  {title}  {company}
 """
 
 # SUBJECT = "Application for Associate Project Manager - Saumya Verma"

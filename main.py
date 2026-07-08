@@ -5,7 +5,7 @@ Run this file to send your emails:  python main.py
 
 It wires the modules together:
   secret/     -> your credentials (never hardcoded)
-  data/       -> recipient list from Excel
+    data/       -> recipient list from CSV
   message/    -> subject + body templates
   config.py   -> SMTP settings, paths, delays
   sender.py   -> the actual sending
@@ -21,8 +21,8 @@ def main():
     print("Loading credentials...")
     sender_email, app_password = credentials.get_credentials()
 
-    print(f"Loading recipients from {config.EXCEL_FILE} ...")
-    recipients = recipients_module.load_recipients(config.EXCEL_FILE)
+    print(f"Loading recipients from {config.CSV_FILE} ...")
+    recipients = recipients_module.load_recipients(config.CSV_FILE)
     print(f"  {len(recipients)} recipients loaded.")
 
     if not recipients:

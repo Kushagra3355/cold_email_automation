@@ -1,6 +1,5 @@
 # Never commit real secrets or data
 secret/.env
-data/*.xlsx
 data/*.xlsm
 __pycache__/
 *.pyc
