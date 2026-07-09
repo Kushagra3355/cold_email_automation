@@ -10,22 +10,17 @@ Available merge tags (from your CSV columns):  {name}  {title}  {company}
 
 # I hope you are doing well.
 
-# I am writing to express my interest in the Project Manager position at {company}.
-# With experience in coordination, documentation, stakeholder communication,
-# and project tracking, I believe I would be a good fit for this opportunity.
+# I am writing to express my interest in the Project Manager position at {company}. With experience in coordination, documentation, stakeholder 
+# communication, and project tracking, I believe I would be a good fit for this opportunity.
 
-# I have hands-on experience working with tools such as MS Excel and MS Word,
-# along with project coordination practices involving timeline tracking,
-# follow-ups, and cross-functional collaboration. I am highly organized,
-# detail-oriented, and eager to contribute to a dynamic environment like
+# I have hands-on experience working with tools such as MS Excel and MS Word, along with project coordination practices involving timeline tracking,
+# follow-ups, and cross-functional collaboration. I am highly organized, detail-oriented, and eager to contribute to a dynamic environment like
 # {company}.
 
-# My interest in project management and process improvement, combined with
-# my ability to communicate effectively and manage responsibilities
+# My interest in project management and process improvement, combined with my ability to communicate effectively and manage responsibilities
 # efficiently, motivates me to apply for this role.
 
-# I have attached my resume for your consideration and would welcome the
-# opportunity to discuss how my skills and enthusiasm align with your team's
+# I have attached my resume for your consideration and would welcome the opportunity to discuss how my skills and enthusiasm align with your team's
 # requirements.
 
 # Thank you for your time and consideration. I look forward to hearing from you.

@@ -27,5 +27,5 @@ ATTACHMENTS = [
 ]
 
 # --- Behaviour ---
-DELAY_SEC = 60             # pause between emails to avoid rate limits
+DELAY_SEC = 45             # pause between emails to avoid rate limits
 MAX_RETRIES = 2           # retry a failed send this many times before giving up
