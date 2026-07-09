@@ -126,10 +126,11 @@ smtp_mode = st.sidebar.selectbox("SMTP Mode", ["ssl", "starttls"], index=0)
 delay_sec = st.sidebar.slider("Delay between emails (seconds)", min_value=10, max_value=300, value=60, step=5)
 max_retries = st.sidebar.number_input("Max Retries per email", min_value=0, max_value=5, value=2)
 
-#  CORRECT
 if st.sidebar.button("Test SMTP Connection"):
     with st.spinner("Testing..."):
         success, msg = test_smtp_connection(smtp_server, smtp_port, smtp_mode, sender_email, app_password)
+        if success: st.sidebar.success(msg)
+        else: st.sidebar.error(f"Failed: {msg}")
 
 # --- MAIN INTERFACE: CONFIGURATION & UPLOADS ---
 upload_col, template_col = st.columns(2)
@@ -184,14 +185,30 @@ if uploaded_csv:
             st.markdown(f"**Actual Outgoing Body:**")
             st.text_area("Complete Rendered Output Text Area", value=rendered_body, height=350, disabled=True)
 
-        #  CORRECT
         with document_tab:
             if uploaded_resume:
                 st.markdown(f"#### Attached File: `{uploaded_resume.name}`")
+                
                 resume_bytes = uploaded_resume.getvalue()
+                
+                # Native Download & View Button Fallback to bypass Chrome Sandbox policy limits
+                st.download_button(
+                    label="📥 Open / Download PDF to Verify Layout",
+                    data=resume_bytes,
+                    file_name=uploaded_resume.name,
+                    mime="application/pdf",
+                    help="Click here if Chrome prevents the inline preview block from rendering directly below."
+                )
+                
+                st.markdown("---")
+                
                 base64_pdf = base64.b64encode(resume_bytes).decode('utf-8')
-                pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600" type="application/pdf"></iframe>'
-                st.markdown(pdf_display, unsafe_allow_html=True)       
+                pdf_display = f"""
+                <iframe src="data:application/pdf;base64,{base64_pdf}" width="100%" height="600" type="application/pdf">
+                    <p>Your browser does not support embedded PDFs. Please use the download button above to view the file.</p>
+                </iframe>
+                """
+                st.markdown(pdf_display, unsafe_allow_html=True)
             else:
                 st.warning("⚠️ No resume attached yet. Upload a PDF in section 1 to review it here.")
 
